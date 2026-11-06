@@ -3,40 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BaroLog support</title>
-<meta name="description" content="Support and privacy policy for BaroLog, the barometer with pressure-drop alerts.">
-<style>
-  :root { color-scheme: light dark; --bg:#f6f8fb; --fg:#0a0e16; --muted:#5b6672; --accent:#2563eb; --card:#ffffff; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0a0e16; --fg:#ecf0f5; --muted:#9aa6b4; --accent:#60a5fa; --card:#131a24; } }
-  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { max-width:680px; margin:0 auto; padding:48px 16px 64px; }
-  h1 { font-size:34px; margin:0 0 4px; } h2 { margin-top:40px; font-size:22px; }
-  p.lead { color:var(--muted); margin-top:0; }
-  .card { background:var(--card); border-radius:14px; padding:16px 20px; margin:16px 0; }
-  a { color:var(--accent); }
-  .logo { width:72px; height:72px; border-radius:18px; display:block; margin-bottom:16px; }
-  footer { color:var(--muted); font-size:14px; margin-top:48px; }
-</style>
+<title>BaroLog: barometer app for Android with pressure trend and forecast</title>
+<meta name="description" content="BaroLog is a barometer for Android. Live air pressure in hPa, inHg, mmHg or kPa, the 3-hour trend, a 24-hour pressure forecast and a simple headache log. No ads, no account.">
+<link rel="canonical" href="https://eastframe-technology.github.io/barolog-support/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BaroLog: barometer with pressure trend and forecast">
+<meta property="og:description" content="Live air pressure, the 3-hour trend in plain words, and a 24-hour pressure forecast for your area. No ads, no account.">
+<meta property="og:image" content="https://eastframe-technology.github.io/barolog-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/barolog-support/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"BaroLog: Barometer & Alerts","operatingSystem":"Android","applicationCategory":"UtilitiesApplication","description":"Barometer with live air pressure, 3-hour trend, a 24-hour pressure forecast and a simple headache log. No ads, no subscription, no account.","image":"https://eastframe-technology.github.io/barolog-support/img/og.jpg","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"}}
+</script>
 </head>
 <body>
 <main>
-  <img class="logo" src="icon.png" alt="">
-  <h1>BaroLog</h1>
-  <p class="lead">Barometer with pressure-drop alerts. Free, with one optional unlock. No ads, no subscription, no account.</p>
+  <nav><a class="home" href="./"><img src="icon.png" alt="">BaroLog</a><a href="tools/pressure-converter.html">Converter</a><a href="tools/sea-level-pressure.html">Sea level</a><a href="guides/how-to-read-a-barometer.html">Reading a barometer</a><a href="guides/weather-and-headaches.html">Weather and headaches</a><a href="#support">Support</a></nav>
+
+  <h1>A barometer app that shows where the pressure is heading</h1>
+  <p class="lead">BaroLog reads your phone's barometer and tells you the air pressure, how it has moved over the last 3 hours, and what the forecast expects for the next 24. Your readings stay on your phone.</p>
+  <!-- PLAY_CTA --><p class="soon">Coming soon to Google Play</p><!-- /PLAY_CTA -->
+  <p class="note">Android. Free: live pressure, trend, forecast, 3-day history and the headache log. BaroLog Pro, one in-app purchase paid once: pressure-drop alerts, 7 and 30 day history, CSV export.</p>
+
+  <div class="shots" aria-label="Screenshots">
+    <img src="img/shot-1.webp" width="200" height="444" alt="Main screen showing 30.13 inHg at sea level, a falling trend, and a chart of measured and forecast pressure">
+    <img src="img/shot-2.webp" width="200" height="444" alt="Chart with measured pressure as a solid line and the forecast as a dashed line" loading="lazy">
+    <img src="img/shot-3.webp" width="200" height="444" alt="History screen with a 7-day pressure chart, minimum and maximum, and two logged headache times" loading="lazy">
+    <img src="img/shot-4.webp" width="200" height="444" alt="Settings for pressure-drop alerts, with drop size and time window" loading="lazy">
+    <img src="img/shot-5.webp" width="200" height="444" alt="Main screen in the light theme" loading="lazy">
+  </div>
+
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3>Live pressure</h3>From your phone's barometer, in hPa, inHg, mmHg or kPa. A running median keeps a slammed door or an elevator ride from moving the number.</div>
+    <div class="card"><h3>Trend in plain words</h3>Rising fast, rising, steady, falling or falling fast, with the change over 3 hours. <a href="guides/how-to-read-a-barometer.html">What the words mean</a>.</div>
+    <div class="card"><h3>Pressure forecast</h3>The next 24 hours of pressure for your area on the same chart as your readings. Forecast data from MET Norway, CC BY 4.0.</div>
+    <div class="card"><h3>Sea level or your altitude</h3>Sea-level pressure to compare with weather reports, or the raw pressure where you are. <a href="tools/sea-level-pressure.html">How the two relate</a>.</div>
+    <div class="card"><h3>Pressure-drop alerts (Pro)</h3>Pick a drop size and a time window, such as 5 hPa within 6 hours. You get a notification about the air pressure. Android decides how often background checks run, so one can arrive late.</div>
+    <div class="card"><h3>Headache log</h3>Tap "Log headache" and the time is marked on the chart. That is all it does. It keeps your own record and draws no conclusions from it. <a href="guides/weather-and-headaches.html">What is known about weather and headaches</a>.</div>
+  </div>
+
+  <h2>Where it helps</h2>
+  <ul>
+    <li><strong>At home</strong>, out of curiosity about the weather, or to see a front come through on the chart.</li>
+    <li><strong>On a trail or a boat</strong>, as a second look at the trend. The barometer works without a signal. It adds to a proper forecast and doesn't replace one.</li>
+    <li><strong>In a classroom</strong>, to compare units and to see how pressure changes with height.</li>
+    <li><strong>Keeping notes for a doctor.</strong> Some people like a simple record of when they had a headache, to bring to an appointment. BaroLog is not a medical tool, and the evidence on pressure and headaches is mixed. <a href="guides/weather-and-headaches.html">Read the guide</a>.</li>
+  </ul>
+
+  <h2>Free tools, no install</h2>
+  <div class="grid">
+    <div class="card"><h3><a href="tools/pressure-converter.html">Pressure unit converter</a></h3>hPa, inHg, mmHg and kPa, as you type.</div>
+    <div class="card"><h3><a href="tools/sea-level-pressure.html">Sea-level pressure calculator</a></h3>From a barometer reading and your elevation.</div>
+  </div>
 
   <h2 id="support">Support</h2>
   <div class="card">
-    <p>Questions, bugs, or feature requests: email <a href="mailto:contact@eastframe-technology.com">contact@eastframe-technology.com</a>. A human reads every message, usually the same day.</p>
-    <p>A <a href="barolog-ios-demo.mp4">2.5-minute captioned walkthrough</a> shows every feature.</p>
+    <p>Questions, bugs, or feature requests: email <a href="mailto:contact@eastframe-technology.com">contact@eastframe-technology.com</a>. A human reads every message, usually the same day. We can't give medical advice.</p>
+    <p>A <a href="barolog-ios-demo.mp4">2.5-minute captioned walkthrough</a>, recorded on iOS, shows every feature.</p>
   </div>
 
   <h2>Frequently asked</h2>
   <div class="card">
     <p><strong>Why does the number differ from my weather app?</strong> With "Show sea-level pressure" on, BaroLog calibrates your phone's barometer against the forecast for your area, so it matches weather reports within a few tenths. With it off, you see the raw pressure at your altitude, which is lower the higher you are.</p>
     <p><strong>My phone has no barometer.</strong> Many Android phones don't. BaroLog then shows the forecast pressure for your area, and alerts use the forecast.</p>
-    <p><strong>Why did an alert arrive late?</strong> iOS and Android decide how often apps may run in the background, especially when the battery is low. BaroLog checks every time it is allowed to and every time you open it. Forecast-based alerts usually give hours of warning.</p>
+    <p><strong>Does it need the internet?</strong> The barometer, trend and history work without a connection. The forecast and sea-level calibration need one. BaroLog sends only an approximate position, about 10 km, to fetch the forecast.</p>
+    <p><strong>Why did an alert arrive late?</strong> Android decides how often apps may run in the background, especially when the battery is low. BaroLog checks every time it is allowed to and every time you open it. Alerts based on the forecast can reach you hours before the pressure falls.</p>
     <p><strong>Is there a subscription?</strong> No. BaroLog Pro is a single purchase. Restore it on a new phone from Settings.</p>
-    <p><strong>Is this medical advice?</strong> No. BaroLog is not a medical device. The headache log helps you see patterns; talk to a doctor about treatment.</p>
+    <p><strong>Is this medical advice?</strong> No. BaroLog is a barometer with a simple log. It is not a medical device, and it does not diagnose, treat, predict or prevent any condition. Its alerts are about air pressure and say nothing about how you will feel. Please talk to a doctor about headaches.</p>
   </div>
 
   <h2 id="privacy">Privacy policy</h2>
@@ -53,7 +89,7 @@
     <p><strong>Changes.</strong> A new version of this policy will be published at this address with a new effective date.</p>
   </div>
 
-  <footer>© 2026 Eastframe Technology LLC</footer>
+  <footer>© 2026 Eastframe Technology LLC · <a href="privacy.html">Privacy policy</a><br>BaroLog is not a medical device. It does not diagnose, treat, predict or prevent any condition.</footer>
 </main>
 </body>
 </html>

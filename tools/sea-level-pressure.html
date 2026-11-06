@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sea-level pressure calculator: station pressure and elevation</title>
+<meta name="description" content="Convert station pressure to sea-level pressure from your elevation, in hPa, inHg, mmHg or kPa. Free, with the formula, a worked example and its limits.">
+<link rel="canonical" href="https://eastframe-technology.github.io/barolog-support/tools/sea-level-pressure.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sea-level pressure calculator">
+<meta property="og:description" content="Convert station pressure to sea-level pressure from your elevation. With the formula, a worked example and its limits.">
+<meta property="og:image" content="https://eastframe-technology.github.io/barolog-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/barolog-support/tools/sea-level-pressure.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between station pressure and sea-level pressure?","acceptedAnswer":{"@type":"Answer","text":"Station pressure is what a barometer measures where it is. Sea-level pressure is an adjusted figure: an estimate of what the pressure would be at that spot if it were at sea level. Weather maps and reports use it so that places at different heights can be compared."}},
+{"@type":"Question","name":"Why doesn't my result match the weather report?","acceptedAnswer":{"@type":"Answer","text":"A difference of a few hPa is normal. Weather services use the real temperature and their own methods, your elevation may be a little off, the barometer may have a small offset, and the report may come from a station some distance away."}},
+{"@type":"Question","name":"Which floor should I count for elevation?","acceptedAnswer":{"@type":"Answer","text":"Use the height of the barometer itself, not the ground outside. Near sea level, each 8 m or so of height changes the pressure by about 1 hPa, so a tenth floor makes a visible difference."}},
+{"@type":"Question","name":"Can I use this result as an altimeter setting for flying?","acceptedAnswer":{"@type":"Answer","text":"No. Use the official altimeter setting from your weather briefing or air traffic control. This page is for learning and general use, not for navigation."}}
+]}
+</script>
+</head>
+<body>
+<main>
+  <nav><a class="home" href="../"><img src="../icon.png" alt="">BaroLog</a><a href="pressure-converter.html">Converter</a><a href="sea-level-pressure.html">Sea level</a><a href="../guides/how-to-read-a-barometer.html">Reading a barometer</a><a href="../guides/weather-and-headaches.html">Weather and headaches</a><a href="../#support">Support</a></nav>
+  <h1>Station pressure to sea-level pressure</h1>
+  <p class="lead">Enter what your barometer reads and how high it is. You get the sea-level pressure, which is the figure weather reports use.</p>
+
+  <section class="tool" aria-labelledby="t1">
+    <h2 id="t1">Sea-level pressure</h2>
+    <div class="fields">
+      <div><label for="station">Station pressure</label><div class="pair"><input id="station" type="text" inputmode="decimal" autocomplete="off" value="985"><select id="stationUnit" aria-label="Pressure unit"><option value="hpa" selected>hPa</option><option value="inhg">inHg</option><option value="mmhg">mmHg</option><option value="kpa">kPa</option></select></div></div>
+      <div><label for="elevation">Elevation</label><div class="pair"><input id="elevation" type="text" inputmode="decimal" autocomplete="off" value="250"><select id="elevationUnit" aria-label="Elevation unit"><option value="m" selected>m</option><option value="ft">ft</option></select></div></div>
+    </div>
+    <div class="answer" id="seaAnswer" aria-live="polite">
+      <span class="big" id="seaBig">1014.7 hPa</span>
+      <span class="rest" id="seaRest">29.96 inHg · 761.1 mmHg · 101.47 kPa</span>
+      <span class="rest" id="seaDelta">+29.7 hPa from your reading</span>
+    </div>
+    <p class="message" id="seaMessage" role="status">Nothing you type leaves this page. It all runs in your browser.</p>
+    <noscript><p class="message">The calculator needs JavaScript. The formula below works on any calculator.</p></noscript>
+  </section>
+
+  <section class="tool" aria-labelledby="t2">
+    <h2 id="t2">The other way: elevation from two pressures</h2>
+    <div class="fields">
+      <div><label for="altStation">Station pressure</label><input id="altStation" type="text" inputmode="decimal" autocomplete="off" value="1010"></div>
+      <div><label for="altSea">Sea-level pressure</label><input id="altSea" type="text" inputmode="decimal" autocomplete="off" value="1030"></div>
+      <div><label for="altUnit">Unit of both</label><select id="altUnit"><option value="hpa" selected>hPa</option><option value="inhg">inHg</option><option value="mmhg">mmHg</option><option value="kpa">kPa</option></select></div>
+    </div>
+    <div class="answer" aria-live="polite">
+      <span class="big" id="altBig">165 m</span>
+      <span class="rest" id="altRest">542 ft</span>
+    </div>
+    <p class="message" id="altMessage" role="status"></p>
+  </section>
+
+  <p class="note">BaroLog, the barometer app these tools come from, uses this same formula for its altitude estimate. <!-- PLAY_CTA --><strong>Coming soon to Google Play</strong><!-- /PLAY_CTA --></p>
+
+  <h2>The formula</h2>
+  <p>Air pressure falls as you go up, because there is less air above you. This calculator uses the international barometric formula, with the same constants as BaroLog. In the app it gives altitude (h, in metres) from station pressure and sea-level pressure:</p>
+  <code class="formula">h = 44330 × (1 − (P_station / P_sea)^(1 / 5.255))</code>
+  <p>Solved for sea-level pressure, it becomes:</p>
+  <code class="formula">P_sea = P_station / (1 − h / 44330)^5.255</code>
+
+  <h2>Worked example</h2>
+  <p>A barometer at 250 m reads 985 hPa.</p>
+  <ol>
+    <li>250 / 44330 = 0.00564, and 1 − 0.00564 = 0.99436.</li>
+    <li>0.99436 to the power 5.255 is 0.97072.</li>
+    <li>985 / 0.97072 = 1014.7 hPa, which is also 29.96 inHg.</li>
+  </ol>
+
+  <h2>Limits</h2>
+  <ul>
+    <li><strong>It assumes a standard atmosphere.</strong> The real air column may be warmer or colder. At low elevations the effect is small. At high elevations, or in very hot or cold weather, the result can differ from an official figure by several hPa or more.</li>
+    <li><strong>Elevation errors carry through.</strong> Near sea level, 8 m of error is about 1 hPa.</li>
+    <li><strong>Weather services have their own methods.</strong> They can give a different number from the same reading.</li>
+    <li><strong>Not for flying or navigation.</strong> Use the official altimeter setting from your briefing or from air traffic control.</li>
+  </ul>
+
+  <h2>How this differs from the app</h2>
+  <p>This page needs you to supply the elevation. BaroLog doesn't ask for one. With "Show sea-level pressure" on, it compares your phone's readings with the sea-level forecast for your area over the last day, and adds that gap to the reading. It then uses the formula above to estimate your altitude. So the app's sea-level figure and this page's can differ slightly.</p>
+
+  <h2>Frequently asked</h2>
+  <div class="card">
+    <p><strong>What is the difference between station pressure and sea-level pressure?</strong> Station pressure is what a barometer measures where it is. Sea-level pressure is an adjusted figure: an estimate of what the pressure would be at that spot if it were at sea level. Weather maps and reports use it so that places at different heights can be compared.</p>
+    <p><strong>Why doesn't my result match the weather report?</strong> A difference of a few hPa is normal. Weather services use the real temperature and their own methods, your elevation may be a little off, the barometer may have a small offset, and the report may come from a station some distance away.</p>
+    <p><strong>Which floor should I count for elevation?</strong> Use the height of the barometer itself, not the ground outside. Near sea level, each 8 m or so of height changes the pressure by about 1 hPa, so a tenth floor makes a visible difference.</p>
+    <p><strong>Can I use this result as an altimeter setting for flying?</strong> No. Use the official altimeter setting from your weather briefing or air traffic control. This page is for learning and general use, not for navigation.</p>
+  </div>
+
+  <footer>© 2026 Eastframe Technology LLC · <a href="../privacy.html">Privacy policy</a><br>BaroLog is not a medical device. It does not diagnose, treat, predict or prevent any condition.</footer>
+</main>
+<script src="pressure.js"></script>
+<script>
+(function () {
+  var P = window.Pressure;
+  function $(id) { return document.getElementById(id); }
+  var idle = $('seaMessage').textContent;
+
+  function seaLevel() {
+    var unit = $('stationUnit').value;
+    var reading = P.parseNumber($('station').value);
+    var height = P.parseNumber($('elevation').value);
+    var problem = null;
+    var station = null;
+    var metres = null;
+    if (reading === null || height === null) {
+      problem = 'Enter a number in both boxes.';
+    } else {
+      station = P.toHpa(reading, unit);
+      metres = $('elevationUnit').value === 'ft' ? P.feetToMetres(height) : height;
+      problem = P.checkStation(station) || P.checkElevation(metres);
+    }
+    if (problem) {
+      $('seaBig').textContent = '-';
+      $('seaRest').textContent = '';
+      $('seaDelta').textContent = '';
+      $('seaMessage').textContent = problem;
+      return;
+    }
+    var sea = P.seaLevelFromStation(station, metres);
+    // Lead with the unit the reading was typed in, and show the rest below.
+    $('seaBig').textContent = P.format(sea, unit) + ' ' + P.SYMBOL[unit];
+    $('seaRest').textContent = P.UNITS.filter(function (u) { return u !== unit; })
+      .map(function (u) { return P.format(sea, u) + ' ' + P.SYMBOL[u]; }).join(' · ');
+    $('seaDelta').textContent = P.formatDelta(sea - station, unit) + ' ' + P.SYMBOL[unit] + ' from your reading';
+    $('seaMessage').textContent = idle;
+  }
+
+  function altitude() {
+    var unit = $('altUnit').value;
+    var a = P.parseNumber($('altStation').value);
+    var b = P.parseNumber($('altSea').value);
+    var problem = null;
+    if (a === null || b === null) problem = 'Enter a number in both boxes.';
+    else problem = P.checkStation(P.toHpa(a, unit)) || P.checkStation(P.toHpa(b, unit));
+    if (problem) {
+      $('altBig').textContent = '-';
+      $('altRest').textContent = '';
+      $('altMessage').textContent = problem;
+      return;
+    }
+    var m = P.altitudeFromPressure(P.toHpa(a, unit), P.toHpa(b, unit));
+    $('altBig').textContent = m.toFixed(0) + ' m';
+    $('altRest').textContent = P.metresToFeet(m).toFixed(0) + ' ft';
+    $('altMessage').textContent = '';
+  }
+
+  ['station', 'stationUnit', 'elevation', 'elevationUnit'].forEach(function (id) {
+    $(id).addEventListener('input', seaLevel);
+    $(id).addEventListener('change', seaLevel);
+  });
+  ['altStation', 'altSea', 'altUnit'].forEach(function (id) {
+    $(id).addEventListener('input', altitude);
+    $(id).addEventListener('change', altitude);
+  });
+})();
+</script>
+</body>
+</html>
